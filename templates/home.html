@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Weather | Home</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="home-page">
+    <div class="glass-layout animate-fade">
+        <div class="hero-card">
+            <div class="icon-area">
+                <i class="fas fa-cloud-moon-rain main-icon"></i>
+            </div>
+
+            <h1 class="main-title">Kerala Weather</h1>
+            <p class="subtitle">Choose your location</p>
+
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="district-input" placeholder="Type district name..." autocomplete="off">
+                    <div id="suggestions-box" class="suggestions hidden"></div>
+                </div>
+
+                <button id="view-btn" class="view-btn">
+                    <span>View Forecast</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Offline Message -->
+            <div id="offline-msg" class="offline-pill hidden">
+                <i class="fas fa-wifi-slash"></i> Offline Mode
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
