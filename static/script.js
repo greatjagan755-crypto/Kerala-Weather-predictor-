@@ -116,7 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateDashboard(data);
                     loadHistory();
                 })
-                .catch(err => console.error(err));
+                .catch(err => {
+                    console.error("Fetch Error:", err);
+                    alert("Failed to connect to the server. Please check your internet connection.");
+                });
         }
 
         function updateDashboard(data) {

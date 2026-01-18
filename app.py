@@ -50,7 +50,8 @@ def get_weather():
     url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current=temperature_2m,relative_humidity_2m,surface_pressure,wind_speed_10m,weather_code,precipitation_probability,apparent_temperature,cloud_cover,visibility&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,cloud_cover&forecast_days=2&timezone=auto"
     
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=10)
+        response.raise_for_status() # Raise error for bad status codes
         data = response.json()
         
         current = data.get('current', {})
@@ -113,6 +114,7 @@ def get_weather():
         })
 
     except Exception as e:
+        print(f"Server Error: {e}") # Log to terminal
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/history')
